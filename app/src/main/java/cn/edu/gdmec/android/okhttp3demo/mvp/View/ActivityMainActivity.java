@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
 import java.util.TimerTask;
 import cn.edu.gdmec.android.okhttp3demo.R;
 import cn.edu.gdmec.android.okhttp3demo.mvp.WeatherBean;
@@ -75,6 +76,7 @@ public class ActivityMainActivity extends Activity implements IWeatherView, View
                     tvWeatherYesterday.setText(
                             "昨日天气：" + weatherBean.getData().getYesterday().getLow() + " "
                                     + weatherBean.getData().getYesterday().getHigh());
+                    List<WeatherBean.DataBean.ForecastBean> forecastBeanList = weatherBean.getData().getForecast();
                 }
             }
         });
