@@ -1,5 +1,7 @@
 package cn.edu.gdmec.android.okhttp3demo.mvp;
 
+import com.google.gson.Gson;
+
 import java.util.List;
 
 public class WeatherBean  {
@@ -364,5 +366,14 @@ public class WeatherBean  {
                 this.notice = notice;
             }
         }
+    }
+    public static WeatherBean getWeather(String res) {
+
+        Gson gson =new Gson();
+
+        WeatherBean wetherBean = gson.fromJson(res, WeatherBean.class);
+
+        return wetherBean;
+
     }
 }
