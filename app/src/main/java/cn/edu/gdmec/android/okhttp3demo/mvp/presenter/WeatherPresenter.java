@@ -6,7 +6,7 @@ import cn.edu.gdmec.android.okhttp3demo.mvp.model.ILoadListener;
 import cn.edu.gdmec.android.okhttp3demo.mvp.model.IWeatherModel;
 import cn.edu.gdmec.android.okhttp3demo.mvp.model.WeatherModel;
 
-public class WeatherPresenter implements IWeatherPresenter,ILoadListener {
+public class WeatherPresenter{ /*implements IWeatherPresenter,ILoadListener {
 
     private String url = "https://www.sojson.com/open/api/weather/json.shtml?city=";
 
@@ -34,5 +34,5 @@ public class WeatherPresenter implements IWeatherPresenter,ILoadListener {
     public void onFailure(Exception e) {
         iWeatherView.hideProgress();
         iWeatherView.showLoadFailMsg(e);
-    }
+    }*/
 }

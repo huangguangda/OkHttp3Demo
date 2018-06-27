@@ -1,20 +1,23 @@
 package cn.edu.gdmec.android.okhttp3demo.mvp.model;
 
+
+import cn.edu.gdmec.android.okhttp3demo.mvp.BookBean;
 import cn.edu.gdmec.android.okhttp3demo.mvp.WeatherBean;
 import cn.edu.gdmec.android.okhttp3demo.mvp.utils.OkHttpUtils;
 
 /**
- * Created by Jack on 2018/5/15.
+ * Created by Jack on 2018/5/22.
  */
 
-public class WeatherModel{/* implements IWeatherModel {
+public class BookModel implements IBookModel{
     @Override
-    public void loadWeather(String url, final ILoadListener loadListener) {
+    public void  loadBook(String url,final ILoadListener loadListener){
         OkHttpUtils.ResultCallback resultCallback=new OkHttpUtils.ResultCallback() {
             @Override
-            public void getWeather(WeatherBean weatherBean) {
-                loadListener.onSuccess(weatherBean);
+            public void getBook(BookBean bookBean) {
+                loadListener.onSuccess(bookBean);
             }
+
 
             @Override
             public void onFailure(Exception e) {
@@ -22,5 +25,7 @@ public class WeatherModel{/* implements IWeatherModel {
             }
         };
         OkHttpUtils.getResultCallback(url,resultCallback);
-    }*/
+    }
+
+
 }

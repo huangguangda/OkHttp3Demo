@@ -10,15 +10,21 @@ import android.widget.Toast;
 import java.util.List;
 import java.util.TimerTask;
 import cn.edu.gdmec.android.okhttp3demo.R;
+import cn.edu.gdmec.android.okhttp3demo.mvp.BookBean;
 import cn.edu.gdmec.android.okhttp3demo.mvp.WeatherBean;
+import cn.edu.gdmec.android.okhttp3demo.mvp.presenter.BookPresenter;
 import cn.edu.gdmec.android.okhttp3demo.mvp.presenter.WeatherPresenter;
 
-public class ActivityMainActivity extends Activity implements IWeatherView, View.OnClickListener {
+public class ActivityMainActivity extends Activity implements IWeatherView,IBookView, View.OnClickListener {
 
     private TextView tvWeather;
     private TextView tvWeatherYesterday;
+
+    private TextView tvBookName;
+    private TextView tvBookAuthor;
+
     private ProgressDialog progressDialog;
-    private WeatherPresenter presenter;
+    private BookPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,18 +35,32 @@ public class ActivityMainActivity extends Activity implements IWeatherView, View
         findViewById(R.id.btn_beijing_search).setOnClickListener(this);
         tvWeather = (TextView) findViewById(R.id.tv_weather);
         tvWeatherYesterday = (TextView) findViewById(R.id.tv_weather_yesterday);
-        presenter = new WeatherPresenter(this);
+        //presenter = new WeatherPresenter(this);
+
+        findViewById(R.id.btn_search_name).setOnClickListener(this);
+        findViewById(R.id.btn_search_author).setOnClickListener(this);
+        tvBookName = (TextView) findViewById(R.id.tv_book_name);
+        tvBookAuthor = (TextView) findViewById(R.id.tv_book_author);
+
+        presenter = new BookPresenter(this);
+
 
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btn_search:
-                presenter.loadWeather("广州");
+//            case R.id.btn_search:
+//                presenter.loadWeather("广州");
+//                break;
+//            case R.id.btn_beijing_search:
+//                presenter.loadWeather("北京");
+//                break;
+            case R.id.btn_search_name:
+                presenter.loadBook();
                 break;
-            case R.id.btn_beijing_search:
-                presenter.loadWeather("北京");
+            case R.id.btn_search_author:
+                presenter.loadBook();
                 break;
         }
     }
@@ -80,6 +100,20 @@ public class ActivityMainActivity extends Activity implements IWeatherView, View
                 }
             }
         });
+    }
+
+    @Override
+    public void showBookData(final BookBean bookBean) {
+        runOnUiThread((new TimerTask() {
+            @Override
+            public void run() {
+
+
+                tvBookName.setText("名称："+ bookBean.getBooks().get(0).getSubtitle());
+                tvBookAuthor.setText("作者："+bookBean.getBooks().get(0).getAuthor());
+
+            }
+        }));
     }
 
     @Override

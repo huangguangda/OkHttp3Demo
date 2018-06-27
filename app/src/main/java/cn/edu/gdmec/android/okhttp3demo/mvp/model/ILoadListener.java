@@ -1,5 +1,7 @@
 package cn.edu.gdmec.android.okhttp3demo.mvp.model;
 
+
+import cn.edu.gdmec.android.okhttp3demo.mvp.BookBean;
 import cn.edu.gdmec.android.okhttp3demo.mvp.WeatherBean;
 
 /**
@@ -7,6 +9,9 @@ import cn.edu.gdmec.android.okhttp3demo.mvp.WeatherBean;
  */
 
 public interface ILoadListener {
-    void onSuccess(WeatherBean bean);
+    /*void onSuccess(WeatherBean bean);
+    void onFailure(Exception e);
+*/
+    void onSuccess(BookBean bean);
     void onFailure(Exception e);
 }
